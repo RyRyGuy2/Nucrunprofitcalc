@@ -189,11 +189,19 @@ function format(x) {
 function Main() {
     return __awaiter(this, void 0, void 0, function* () {
         let acctualAlloyRarity = lootTable[7].dropchance;
-        const molePetLevelValue = molePetLevel.valueAsNumber;
-        const daemonShardLevelValue = daemonShardLevel.valueAsNumber;
+        let molePetLevelValue = molePetLevel.valueAsNumber;
+        let daemonShardLevelValue = daemonShardLevel.valueAsNumber;
         const highRollerPerkValue = highRollerPerk.checked;
         const includeCrystalsValue = includeCrystals.checked;
         const AuraBuffPerkValue = AuraBuffPerk.checked;
+        if (molePetLevelValue > 100)
+            molePetLevelValue = 100;
+        if (daemonShardLevelValue > 10)
+            daemonShardLevelValue = 10;
+        if (molePetLevelValue < 0)
+            molePetLevelValue = 0;
+        if (daemonShardLevelValue < 0)
+            daemonShardLevelValue = 0;
         if (AuraBuffPerkValue) {
             lootTable[7].dropchance *= 2;
         }
