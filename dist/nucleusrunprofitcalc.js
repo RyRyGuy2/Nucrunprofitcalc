@@ -181,6 +181,11 @@ function UpdatePriceData() {
         }
     });
 }
+function format(x) {
+    return Number.parseFloat(x)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 function Main() {
     return __awaiter(this, void 0, void 0, function* () {
         let acctualAlloyRarity = lootTable[7].dropchance;
@@ -202,7 +207,8 @@ function Main() {
         total -= CalculateRunCost();
         if (!output)
             return;
-        output.textContent = Math.round(total).toString() + " coins profit per run";
+        let result = format(Math.round(total).toString());
+        output.textContent = result + " coins profit per run";
         lootTable[7].dropchance = acctualAlloyRarity;
     });
 }

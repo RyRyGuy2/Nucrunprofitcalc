@@ -191,6 +191,13 @@ async function UpdatePriceData() {
         console.error("Error updating prices:", err);
     }
 }
+
+function format(x: string): string {
+    return Number.parseFloat(x)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 async function Main() {
     let acctualAlloyRarity = lootTable[7].dropchance;
     const molePetLevelValue = molePetLevel.valueAsNumber;
@@ -215,8 +222,8 @@ async function Main() {
     
     if (!output) return;
 
-
-    output.textContent = Math.round(total).toString() + " coins profit per run";
+    let result = format (Math.round(total).toString());
+    output.textContent = result + " coins profit per run";
     lootTable[7].dropchance = acctualAlloyRarity;
 }
 
