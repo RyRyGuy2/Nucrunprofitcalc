@@ -1,0 +1,26 @@
+h1 {
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(10, 10, 10);
+}
+
+body {
+    background-image: url("https://i.ytimg.com/vi/4ErwHoJ-u04/maxresdefault.jpg");
+    background-size: cover;      /* makes it fill the whole screen */
+    background-position: center; /* keeps it centered */
+    background-repeat: no-repeat; /* stops tiling */
+    height: 100vh;               /* makes sure it fills the view */
+    margin: 0;                   /* removes default white borders */
+    text-align: center;
+    font-size: sans-serif;
+    color: rgb(0, 0, 0);
+}
+
+.container {
+    background-color: rgba(35, 31, 36, 0.432); /* semi-transparent white */
+    padding: 20px;
+    border-radius: 10px;
+    outline: 16px rgba(0, 0, 0, 0.774);
+    display: inline-block;
+    margin-top: 50px;
+}

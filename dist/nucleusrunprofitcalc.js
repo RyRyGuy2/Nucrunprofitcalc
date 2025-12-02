@@ -118,7 +118,8 @@ function GetBazaarData() {
 function CalculateRunCost() {
     let eggsCost = bazaarData.products['GOBLIN_EGG_GREEN'].quick_status.sellPrice;
     let aparatusCost = bazaarData.products['PRECURSOR_APPARATUS'].quick_status.sellPrice;
-    return eggsCost + aparatusCost;
+    let keyCost = bazaarData.products['JUNGLE_KEY'].quick_status.sellPrice;
+    return eggsCost + aparatusCost + keyCost;
 }
 function ProfitPerBundleItem(dropItem, rolls) {
     return (dropItem.price * dropItem.quantity * (dropItem.dropchance / 100) * rolls);
@@ -182,6 +183,7 @@ function UpdatePriceData() {
 }
 function Main() {
     return __awaiter(this, void 0, void 0, function* () {
+        let acctualAlloyRarity = lootTable[7].dropchance;
         const molePetLevelValue = molePetLevel.valueAsNumber;
         const daemonShardLevelValue = daemonShardLevel.valueAsNumber;
         const highRollerPerkValue = highRollerPerk.checked;
@@ -200,7 +202,9 @@ function Main() {
         total -= CalculateRunCost();
         if (!output)
             return;
-        output.textContent = Math.round(total).toString() + " coins profit per run";
+        let result = Math.round(total).toString + " coins profit per run";
+        output.textContent = result;
+        lootTable[7].dropchance = acctualAlloyRarity;
     });
 }
 window.Main = Main;

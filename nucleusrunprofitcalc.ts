@@ -126,8 +126,8 @@ async function GetBazaarData() {
 function CalculateRunCost() {
     let eggsCost = bazaarData.products['GOBLIN_EGG_GREEN'].quick_status.sellPrice;
     let aparatusCost = bazaarData.products['PRECURSOR_APPARATUS'].quick_status.sellPrice;
-
-    return eggsCost + aparatusCost;
+    let keyCost = bazaarData.products['JUNGLE_KEY'].quick_status.sellPrice;
+    return eggsCost + aparatusCost + keyCost;
 }
 
 function ProfitPerBundleItem(dropItem: dropItem, rolls: number): number {
@@ -192,6 +192,7 @@ async function UpdatePriceData() {
     }
 }
 async function Main() {
+    let acctualAlloyRarity = lootTable[7].dropchance;
     const molePetLevelValue = molePetLevel.valueAsNumber;
     const daemonShardLevelValue = daemonShardLevel.valueAsNumber;
     const highRollerPerkValue = highRollerPerk.checked;
@@ -205,7 +206,7 @@ async function Main() {
     const output = document.getElementById("output");
     await UpdatePriceData();
 
-    let total = 0;
+    let total: number = 0;
     total += ProfitFromMeter(daemonShardLevelValue);
     for (const item of lootTable) {
         total += ProfitPerBundleItem(item, CalculateRolls(molePetLevelValue, highRollerPerkValue));
@@ -213,7 +214,10 @@ async function Main() {
     total -= CalculateRunCost();
     
     if (!output) return;
-    output.textContent = Math.round(total).toString() + " coins profit per run";
+
+    let result: string = Math.round(total).toString + " coins profit per run";
+    output.textContent = result;
+    lootTable[7].dropchance = acctualAlloyRarity;
 }
 
 (window as any).Main = Main;
