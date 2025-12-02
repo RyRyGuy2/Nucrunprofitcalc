@@ -202,7 +202,7 @@ function Main() {
         total -= CalculateRunCost();
         if (!output)
             return;
-        let result = Math.round(total).toString + " coins profit per run";
+        let result = (Math.round(total * 10) / 10000000).toString() + "M coins profit per run";
         output.textContent = result;
         lootTable[7].dropchance = acctualAlloyRarity;
     });
