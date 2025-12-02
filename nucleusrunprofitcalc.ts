@@ -215,8 +215,8 @@ async function Main() {
     
     if (!output) return;
 
-    let result: string = (Math.round(total * 10) / 10000000).toString() + "M coins profit per run";
-    output.textContent = result;
+
+    output.textContent = Math.round(total).toString() + " coins profit per run";
     lootTable[7].dropchance = acctualAlloyRarity;
 }
 
